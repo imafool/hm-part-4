@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jquery</title>
+  <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-3.7.0.min.js"></script>
+
+</head>
+<body>
+
+  <!--免费API平台选择：https://api.oioweb.cn/-->
+  <script>
+    // $.get(url, [data], [callback])
+
+    // API：ip地址查询
+    let url = 'https://api.oioweb.cn/api/ip/ipaddress'
+    let baiduIp = {
+        ip: '119.75.217.109'
+    }
+
+    // 弹窗输入要查询的ip
+    baiduIp.ip = prompt('请输入ip地址')
+
+    $.get(
+        url,
+        baiduIp,
+        function (result) {
+            console.log(result)
+            /*
+             * {
+                  "code": 200,
+                  "result": {
+                      "start": "119.75.208.0",
+                      "end": "119.75.223.255",
+                      "addr": [
+                          "北京市",
+                          "北京百度网讯科技有限公司BGP节点"
+                      ],
+                      "disp": "北京市 北京百度网讯科技有限公司BGP节点"
+                  },
+                  "msg": "success"
+               }
+             * */
+            if (result['code'] === 200 || result['msg'] === 'success'){
+                console.log('本次请求成功')
+                let resultData = result['result'];
+                let addrArray = resultData['addr'];
+                document.write('该ip归属地为' + addrArray[0] + '；所属运营商为' + resultData['disp'])
+            }
+        }
+    )
+  </script>
+
+</body>
+</html>

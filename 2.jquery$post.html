@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jquery</title>
+  <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-3.7.0.min.js"></script>
+
+</head>
+<body>
+
+  <script>
+    // $.post(url, [data], [callback])
+
+    // API：手机号归属地查询
+    let url = 'https://api.oioweb.cn/api/common/teladress'
+    let data = {
+        mobile: 18049810247
+    }
+
+    data.mobile = Number(prompt('请输入手机号码'))
+
+    $.post(
+        url,
+        data,
+        function (result) {
+            console.log(result)
+
+            if (result['code'] === 200 || result['msg'] === 'success'){
+
+                console.log('本次请求成功，要查询的手机号码是：' + data.mobile)
+
+                let resultData = result.result;
+                let sheng = resultData['prov'];
+                let shi = resultData['city'];
+                let yunyingshang = resultData['name'];
+                let youzhengbianma = resultData['postCode'];
+
+                document.write('该手机号码归属地为' + sheng + shi + '（邮政编码：' + youzhengbianma + '）')
+                document.write('运营商为：' + yunyingshang)
+            }
+        }
+    )
+  </script>
+
+</body>
+</html>
