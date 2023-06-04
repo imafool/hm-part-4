@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>axios</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+  <script>
+    let url = 'https://api.oioweb.cn/api/ip/ipaddress'
+    let baiduIp = {
+        ip: '119.75.217.109'
+    }
+
+    axios.get(
+        url,
+        {params: baiduIp}
+    ).then(function (res) {
+      let result = res.data;
+      console.log(result)
+      //   {
+      //       "code": 200,
+      //           "result": {
+      //           "start": "119.75.208.0",
+      //               "end": "119.75.223.255",
+      //               "addr": [
+      //               "北京市",
+      //               "北京百度网讯科技有限公司BGP节点"
+      //           ],
+      //               "disp": "北京市 北京百度网讯科技有限公司BGP节点"
+      //       },
+      //       "msg": "success"
+      //   }
+    })
+  </script>
+
+</body>
+</html>

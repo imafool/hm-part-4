@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>XHR</title>
+</head>
+<body>
+
+  <script>
+    // XHR.readyState
+    // 0 1 2 3 4 分别标识请求所在状态
+
+    let xmlHttpRequest = new XMLHttpRequest();
+
+    let method = 'GET'
+    let url = 'https://api.oioweb.cn/api/ip/ipaddress?ip=119.75.217.109'
+
+                                      // 0 ---------------------- unsent XHR创建成功，未open
+                                      console.log(xmlHttpRequest.readyState)
+
+    xmlHttpRequest.open(method, url)
+
+                                      // 1 ---------------------- opened open方法已被调用
+                                      console.log(xmlHttpRequest.readyState)
+
+    xmlHttpRequest.send()
+
+                                      // 1 ---------------------- opened
+                                      console.log(xmlHttpRequest.readyState)
+
+    xmlHttpRequest.onreadystatechange = function() {
+
+                                      // 2 ---------------------- headers_reveived : send已经被调用，header已被接收
+                                      console.log(xmlHttpRequest.readyState)
+
+        if (xmlHttpRequest.readyState === 4 && xmlHttpRequest.status === 200){
+
+                                      // ---------------------- 2
+                                      console.log(xmlHttpRequest.readyState)
+
+            console.log(xmlHttpRequest.getAllResponseHeaders())
+                                      // ---------------------- 3 loading 数据接收中，此时response属性已经包含部分数据
+                                      console.log(xmlHttpRequest.readyState)
+
+            console.log(xmlHttpRequest.responseText)
+        }
+                                      // 4 ---------------------- done ajax请求完成，数据传输彻底完成或失败
+                                      console.log(xmlHttpRequest.readyState)
+    }
+
+  </script>
+
+</body>
+</html>

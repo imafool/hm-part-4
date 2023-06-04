@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSON</title>
+  <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-3.7.0.min.js"></script>
+
+</head>
+<body>
+
+<script>
+
+  // XML 和 JSON 都可以用来 【客户端和服务端之间传输数据】，XML格式臃肿体积大传输效率低，JS中解析XML比较麻烦
+
+  // JSON：
+  // JavaScript Object Notation，JavaScript对象表示法，就是JavaScript对象和数组的字符串表示法，【使用文本表示一个JS对象或者数组信息】，所以JSON本质就是字符串
+  // JSON是一种轻量级的文本数据交换格式，作用类似于XML，专门用于存储和传输数据，但是JSON比XML更小更快更易解析
+  // 2001年推广使用，现是主流数据交换格式
+
+  // JSON两种结构：
+  // 对象
+  // 数组
+
+  let obj = {
+      name: 'demo'
+  }
+
+  // JSON对象：
+  let jsonObj = {
+      "name": "huwenfei",
+      "age": 10,
+      "address": false,
+      "marry": null,
+      "hobbies": [],
+      "mine": obj
+  }
+
+  // JSON数组：
+  let jsonArray = [10, "huwenfei", false, null, [], obj]
+
+  // JSON规范：
+  // 1. 属性名必须使用""
+  // 2. 字符串类型必须使用""
+  // 3. 不允许使用''
+  // 4. 不能写注释
+  // 5. 最外层必须是【对象】或【数组】格式
+  // 6. 不能使用undefined或者函数作为JSON的值，允许的值类型只能是：Number，String，Null，Boolean，Object，Array
+
+</script>
+
+</body>
+</html>

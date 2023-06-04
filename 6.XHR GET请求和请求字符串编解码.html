@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>XHR</title>
+</head>
+<body>
+
+  <script>
+    let xmlHttpRequest = new XMLHttpRequest();
+
+    let method = 'GET'
+    let url = 'https://api.oioweb.cn/api/ip/ipaddress?ip=119.75.217.109'  // ?ip=119.75.217.109 查询字符串
+
+    // URL编码 encodeURI() / decodeURI()
+    // URL中不允许出现中文字符（允许英文字母，标点符号，数字等），如需带中文字符，需要对中文字符进行编码/转义，也就是使用英文字符去表示非英文字符
+    // 每个汉字由3组%编码
+
+    // 参数
+    let encodeURI1 = encodeURI('?username=胡文飞');
+    console.log(encodeURI1) // ?username=%E8%83%A1%E6%96%87%E9%A3%9E
+
+    let decodeURI1 = decodeURI('?username=%E8%83%A1%E6%96%87%E9%A3%9E');
+    console.log(decodeURI1) // ?username=胡文飞
+
+
+    // XHR GET请求过程
+    // 1. new XHR
+    // 2. XHR.open
+    // 3. XHR.send
+    // 4. XHR.onreadystatechange
+    xmlHttpRequest.open(method, url)
+    xmlHttpRequest.send()
+
+    xmlHttpRequest.onreadystatechange = function() {
+
+        if (xmlHttpRequest.readyState === 4 && xmlHttpRequest.status === 200){
+            console.log(xmlHttpRequest.getAllResponseHeaders())
+            // content-length: 197
+            // content-type: application/json;charset=utf-8
+
+            console.log(xmlHttpRequest.response)
+            // {"code":200,"result":{"start":"119.75.208.0","end":"119.75.223.255","addr":["北京市","北京百度网讯科技有限公司BGP节点"],"disp":"北京市 北京百度网讯科技有限公司BGP节点"},"msg":"success"}
+
+            console.log(xmlHttpRequest.responseText)
+            // {"code":200,"result":{"start":"119.75.208.0","end":"119.75.223.255","addr":["北京市","北京百度网讯科技有限公司BGP节点"],"disp":"北京市 北京百度网讯科技有限公司BGP节点"},"msg":"success"}
+        }
+    }
+
+  </script>
+
+</body>
+</html>

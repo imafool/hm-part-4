@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSON解析</title>
+  <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-3.7.0.min.js"></script>
+
+</head>
+<body>
+
+<script>
+    // API：手机号归属地查询
+    let method = 'POST'
+    let url = 'https://api.oioweb.cn/api/common/teladress'
+    let data = 'mobile=18049810247' // 参数组装
+
+    let xhr = new XMLHttpRequest();
+    xhr.open(method, url)
+
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+
+    xhr.send(data)
+
+    xhr.onreadystatechange = function() {
+        // 结果是个JSON
+        console.log(xhr.responseText) // {"code":200,"result":{"name":"电信CDMA卡","postCode":"200000","prov":"上海","city":"上海","cityCode":"310100","num":1804981,"provCode":"310000","areaCode":"021","type":2},"msg":"success"}
+
+        // 转成JS对象
+        let resultObj = JSON.parse(xhr.responseText);
+
+        let resultData = resultObj.result;
+        console.log(resultData["name"])
+        console.log(resultData["postCode"])
+        console.log(resultData["prov"])
+        console.log(resultData["city"])
+        console.log(resultData["cityCode"])
+        console.log(resultData["num"])
+        console.log(resultData["provCode"])
+        console.log(resultData["areaCode"])
+        console.log(resultData["type"])
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>XHR L2</title>
+</head>
+<body>
+
+<script>
+    let xhr = new XMLHttpRequest();
+
+    // 使用FormData处理表单数据【这个API支持GET/POST，所以用来模拟】
+    let formData = new FormData();
+    formData.append('ip', '119.75.217.109')
+
+    xhr.open('POST', 'https://api.oioweb.cn/api/ip/ipaddress/formdata')
+    xhr.send(formData)
+
+    xhr.onreadystatechange = function() {
+
+        if (xhr.readyState === 4 && xhr.status === 200){
+            console.log(xhr.responseText)
+        }
+    }
+
+</script>
+
+</body>
+</html>

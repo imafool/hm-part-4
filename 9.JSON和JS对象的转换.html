@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSON</title>
+  <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-3.7.0.min.js"></script>
+
+</head>
+<body>
+
+<script>
+  // JSON是JS对象的字符串表示法，就是使用文本表示一个JS对象信息，本质上是一个字符串。
+
+  // JS对象
+  let obj = {a: 'aValue', b: 'bValue'}
+
+  // JSON字符串
+  let json = '{"a": "aValue", "b": "bValue"}'
+
+  // JSON转成JS对象
+  let parseJson = JSON.parse(json);
+  console.log(parseJson) // {a: 'aValue', b: 'bValue'}
+
+  // JSON对象转JSON
+  let stringfyObject = JSON.stringify(obj)
+  console.log(stringfyObject) // {"a":"aValue","b":"bValue"}
+
+</script>
+
+</body>
+</html>
